@@ -83,65 +83,51 @@ app.get('/api/auth/callback', async (req, res) => {
 
 // مسار استقبال طلبات الخدمات وإرسالها لـ Discord Webhook
 app.post('/api/order', async (req, res) => {
-    const { service, icName, discordUser, icPhone, details } = req.body;
+  const { service, icName, discordUser, icPhone, details } = req.body;
 
-    if (!service || !icName || !discordUser) {
-        return res.status(400).json({ success: false, message: 'يرجى ملء جميع الحقول المطلوبة' });
-    }
+  if (!service || !icName || !discordUser) {
+    return res.status(400).json({ success: false, message: 'يرجى إدخال جميع الحقول المطلوبة!' });
+  }
 
-    const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
-    if (!webhookUrl) {
-        console.error('❌ DISCORD_WEBHOOK_URL غير معرف فـ ملف .env!');
-        return res.status(500).json({ success: false, message: 'رابط الـ Webhook غير معرف في ملف .env' });
-    }
+  // توليد كود طلب فريد تلقائياً (مثال: AV-4821)
+  const orderId = 'AV-' + Math.floor(1000 + Math.random() * 9000);
 
-    const logoUrl = "https://j.top4top.io/p_3933fpbmb1.png";
+  const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
 
-    const embedPayload = {
-        username: "AVORA Agency System",
-        avatar_url: logoUrl,
-        embeds: [{
-            title: "💎 NEW SERVICE REQUEST | طلب خدمة جديد",
-            description: "--------------------------------------------------\n**تم استلام طلب جديد من الموقع الرسمي للوكالة**",
-            color: 16738560, // البرتقالي (#FF6B00)
-            fields: [
-                {
-                    name: "📌 الخدمة المطلوبة",
-                    value: service,
-                    inline: true
-                },
-                {
-                    name: "📊 حالة الطلب",
-                    value: "🟡 قيد المراجعة (Pending)",
-                    inline: true
-                },
-                {
-                    name: "👤 بيانات العميل (IC & Discord)",
-                    value: `• **الاسم فـ اللعبة:** ${icName}\n• **حساب الديسكورد:** ${discordUser}\n• **رقم الهاتف IC:** ${icPhone || 'غير مدخل'}`,
-                    inline: false
-                },
-                {
-                    name: "📝 تفاصيل وملاحظات الطلب",
-                    value: details || 'لا توجد تفاصيل إضافية مذكورة.',
-                    inline: false
-                }
-            ],
-            footer: {
-                text: "AVORA Agency • Advanced Order Management • Atlas RP",
-                icon_url: logoUrl
-            },
-            timestamp: new Date().toISOString()
-        }]
-    };
-
+  if (webhookUrl) {
     try {
-        await axios.post(webhookUrl, embedPayload);
-        console.log("✅ Webhook sent successfully!");
-        return res.json({ success: true, message: 'تم إرسال الطلب بنجاح إلى سيرفر الديسكورد!' });
-    } catch (error) {
-        console.error('❌ Discord Webhook Error:', error.response?.data || error.message);
-        return res.status(500).json({ success: false, message: 'حدث خطأ أثناء إرسال الطلب للسيرفر.' });
+      await fetch(webhookUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          username: 'AVORA Orders System',
+          avatar_url: 'https://j.top4top.io/p_3933fpbmb1.png',
+          embeds: [{
+            title: `📥 طلب خدمة جديد: \${service}`,
+            color: 16738560,
+            fields: [
+              { name: '🔑 كود الطلب', value: `\`#${orderId}\``, inline: true },
+              { name: '👤 العميل (IC)', value: icName, inline: true },
+              { name: '💬 الديسكورد', value: `@${discordUser}`, inline: true },
+              { name: '📞 رقم الهاتف', value: icPhone || 'غير محدد', inline: true },
+              { name: '🛠️ الخدمة', value: service, inline: true },
+              { name: '📜 التفاصيل / الملاحظات', value: details || 'لا توجد ملاحظات إضافية' }
+            ],
+            footer: { text: 'AVORA Agency • Executive Management' },
+            timestamp: new Date().toISOString()
+          }]
+        })
+      });
+    } catch (err) {
+      console.error('Webhook Error:', err);
     }
+  }
+
+  res.json({
+    success: true,
+    orderId: orderId,
+    message: 'تم إرسال طلبك بنجاح إلى طاقم AVORA!'
+  });
 });
 
 // تشغيل السيرفر
