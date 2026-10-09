@@ -89,9 +89,8 @@ app.post('/api/order', async (req, res) => {
     return res.status(400).json({ success: false, message: 'يرجى إدخال جميع الحقول المطلوبة!' });
   }
 
-  // توليد كود طلب فريد تلقائياً (مثال: AV-4821)
+  // توليد كود طلب فريد
   const orderId = 'AV-' + Math.floor(1000 + Math.random() * 9000);
-
   const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
 
   if (webhookUrl) {
@@ -103,15 +102,15 @@ app.post('/api/order', async (req, res) => {
           username: 'AVORA Orders System',
           avatar_url: 'https://j.top4top.io/p_3933fpbmb1.png',
           embeds: [{
-            title: `📥 طلب خدمة جديد: \${service}`,
+            title: '📥 طلب خدمة جديد: ' + service,
             color: 16738560,
             fields: [
-              { name: '🔑 كود الطلب', value: `\`#${orderId}\``, inline: true },
-              { name: '👤 العميل (IC)', value: icName, inline: true },
-              { name: '💬 الديسكورد', value: `@${discordUser}`, inline: true },
-              { name: '📞 رقم الهاتف', value: icPhone || 'غير محدد', inline: true },
+              { name: '🔑 كود الطلب', value: '`#' + orderId + '`', inline: true },
               { name: '🛠️ الخدمة', value: service, inline: true },
-              { name: '📜 التفاصيل / الملاحظات', value: details || 'لا توجد ملاحظات إضافية' }
+              { name: '👤 العميل (IC)', value: icName, inline: false },
+              { name: '💬 الديسكورد', value: '@' + discordUser, inline: true },
+              { name: '📞 رقم الهاتف', value: icPhone || 'غير محدد', inline: true },
+              { name: '📜 التفاصيل / الملاحظات', value: details || 'لا توجد ملاحظات', inline: false }
             ],
             footer: { text: 'AVORA Agency • Executive Management' },
             timestamp: new Date().toISOString()
