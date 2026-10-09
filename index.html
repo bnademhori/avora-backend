@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;800&family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
 :root{
   --bg:#0A0A0C;--bg2:#121217;--bg3:#1A1A22;--text:#EDEDED;--muted:#A0A0A0;
@@ -50,13 +51,28 @@ h1 span{color:var(--o2);text-shadow:0 0 28px rgba(255,107,0,.75)}
 .badge{position:relative;width:82%;aspect-ratio:1;display:grid;place-items:center;background:var(--bg2);border:1px solid var(--o1);clip-path:polygon(50% 0,93% 25%,93% 75%,50% 100%,7% 75%,7% 25%)}
 .badge img{width:65%;height:65%;object-fit:contain}
 
+/* ABOUT SECTION */
+.about-section{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:50px clamp(16px,4vw,48px)}
+.about-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:30px}
+.about-card{background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:26px;transition:.3s}
+.about-card:hover{transform:translateY(-5px);border-color:var(--o1)}
+.about-icon{font-size:2rem;color:var(--o2);margin-bottom:12px}
+.about-card h3{font-size:1.2rem;margin-bottom:8px;color:#fff}
+.about-card p{color:var(--muted);font-size:.92rem}
+
+/* STATS SECTION */
+.stats-section{position:relative;z-index:1;background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:35px 20px;margin:40px 0}
+.stats-grid{max-width:1200px;margin:0 auto;display:flex;justify-content:space-around;align-items:center;flex-wrap:wrap;gap:20px;text-align:center}
+.stat-item h3{font-size:2.4rem;font-weight:800;color:var(--o2)}
+.stat-item p{color:var(--muted);font-size:.9rem;font-weight:600}
+
 /* SERVICES SECTION */
 .services-section{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:60px clamp(16px,4vw,48px)}
 .section-title{text-align:center;margin-bottom:40px}
 .section-title h2{font-size:2rem;font-weight:800}
 .section-title h2 span{color:var(--o2)}
 .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
-.service-card{background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:24px;display:flex;flex-direction:column;justify-content: space-between.3s}
+.service-card{background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:24px;display:flex;flex-direction:column;justify-content: space-between;.3s}
 .service-card:hover{transform:translateY(-5px);border-color:var(--o1);box-shadow:0 10px 30px rgba(255,107,0,.15)}
 .service-icon{font-size:2.5rem;margin-bottom:12px}
 .service-card h3{font-size:1.3rem;margin-bottom:10px;color:#fff}
@@ -96,7 +112,9 @@ footer{position:relative;z-index:1;border-top:1px solid var(--line);padding:20px
   </a>
   <div class="links">
     <a href="#home">الرئيسية</a>
+    <a href="#about">عن الوكالة</a>
     <a href="#services">خدمات الوكالة</a>
+    <a href="#atlas">سيرفر Atlas</a>
   </div>
   <div class="nav-actions">
     <div id="userProfileNav" style="display:none;" class="user-badge">
@@ -114,7 +132,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--line);padding:20px
     <p>خدمات حماية، توسيط، ونقل ممتلكات بأعلى معايير الأمان والاحترافية داخل مدينة أطلس.</p>
     <div style="display:flex;gap:14px;flex-wrap:wrap;">
       <a class="btn" href="#services">استعراض الخدمات</a>
-      <a class="btn btn-outline" href="https://discord.gg/WdgTYxa82" target="_blank">سيرفر الديسكورد</a>
+      <a class="btn btn-outline" href="https://discord.gg/BMFqE7d2fM" target="_blank">سيرفر الديسكورد</a>
     </div>
   </div>
   <div class="badge-wrap">
@@ -123,6 +141,49 @@ footer{position:relative;z-index:1;border-top:1px solid var(--line);padding:20px
     </div>
   </div>
 </header>
+
+<!-- ABOUT SECTION -->
+<section class="about-section" id="about">
+  <div class="section-title">
+    <h2>الرؤية و<span>البروتوكول التنفيذي</span></h2>
+    <p>تلتزم AVORA Agency بأعلى درجات الانضباط والاحترافية داخل Atlas RP</p>
+  </div>
+  <div class="about-grid">
+    <div class="about-card">
+      <div class="about-icon"><i class="fas fa-shield-halved"></i></div>
+      <h3>السرية والأمان المطلق</h3>
+      <p>تأمين شامل لبيانات العملاء والعقود المبرمة، بدون تسريب لأي تفاصيل ميدانية أو تجارية.</p>
+    </div>
+    <div class="about-card">
+      <div class="about-icon"><i class="fas fa-bolt"></i></div>
+      <h3>الاستجابة الميدانية السريعة</h3>
+      <p>طاقم أمني مجهز بمركبات مصفحة وأسلحة مرخصة للتدخل الفوري والتأمين المباشر.</p>
+    </div>
+    <div class="about-card">
+      <div class="about-icon"><i class="fas fa-file-signature"></i></div>
+      <h3>عقود تجارية موثقة</h3>
+      <p>جميع عمليات الوساطة والتأمين تتم عبر وثائق رسمية تضمن حقوق الطرفين وتمنع الاحتيال.</p>
+    </div>
+  </div>
+</section>
+
+<!-- STATS SECTION -->
+<section class="stats-section">
+  <div class="stats-grid">
+    <div class="stat-item">
+      <h3>+150</h3>
+      <p>عملية وتأمين ناجح</p>
+    </div>
+    <div class="stat-item">
+      <h3>100%</h3>
+      <p>سرية العقود والتأمين</p>
+    </div>
+    <div class="stat-item">
+      <h3>24/7</h3>
+      <p>جاهزية واستجابة ميدانية</p>
+    </div>
+  </div>
+</section>
 
 <!-- SERVICES SECTION -->
 <section class="services-section" id="services">
@@ -174,6 +235,40 @@ footer{position:relative;z-index:1;border-top:1px solid var(--line);padding:20px
       <button class="btn" onclick="openOrderModal('تأجير السيارات الفخمة والمصفحة')">طلب الخدمة</button>
     </div>
   </div>
+</section>
+
+<!-- قسم سيرفر أطلس Atlas RP -->
+<section class="atlas-section" id="atlas">
+    <div class="atlas-card">
+        <div class="atlas-header">
+            <div class="atlas-badge">OFFICIAL SERVER</div>
+            <h2>ATLAS ROLEPLAY</h2>
+            <p>السيرفر الرسمي المقترن بجميع خدمات وكالة AVORA</p>
+        </div>
+
+        <div class="atlas-body">
+            <!-- IP السيرفر -->
+            <div class="info-box">
+                <span class="label">🎮 SERVER IP (MTA:SA)</span>
+                <div class="copy-box">
+                    <input type="text" value="mtasa://89.42.88.228:22003" id="atlasIp" readonly>
+                    <button class="btn-copy" onclick="copyAtlasIp()">
+                        <span id="copyBtnText">نسخ IP</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- أزرار الدخول والديسكورد -->
+            <div class="atlas-actions">
+                <a href="mtasa://89.42.88.228:22003" class="btn-mta">
+                    <span>⚡ دخول السيرفر مباشر</span>
+                </a>
+                <a href="https://discord.gg/BMFqE7d2fM" target="_blank" class="btn-discord">
+                    <span>💬 سيرفر الديسكورد</span>
+                </a>
+            </div>
+        </div>
+    </div>
 </section>
 
 <!-- ORDER MODAL -->
@@ -238,154 +333,6 @@ footer{position:relative;z-index:1;border-top:1px solid var(--line);padding:20px
 </div>
 
 <footer>© 2026 AVORA Agency — Atlas Roleplay.</footer>
-
-<script>
-// Background Particles
-const canvas = document.getElementById('particles'), ctx = canvas.getContext('2d');
-let pts = [];
-function resize(){ canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-window.addEventListener('resize', resize); resize();
-for(let i=0; i<35; i++){ pts.push({ x: Math.random()*canvas.width, y: Math.random()*canvas.height, vx: (Math.random()-.5)*.5, vy: (Math.random()-.5)*.5, r: Math.random()*2+1 }); }
-function anim(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  ctx.fillStyle = '#FF6B00'; ctx.strokeStyle = 'rgba(255,107,0,0.12)';
-  pts.forEach((p, idx)=>{
-    p.x += p.vx; p.y += p.vy;
-    if(p.x<0||p.x>canvas.width) p.vx*=-1; if(p.y<0||p.y>canvas.height) p.vy*=-1;
-    ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI*2); ctx.fill();
-    for(let j=idx+1; j<pts.length; j++){
-      let p2 = pts[j], dist = Math.hypot(p.x-p2.x, p.y-p2.y);
-      if(dist < 100){ ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(p2.x, p2.y); ctx.stroke(); }
-    }
-  });
-  requestAnimationFrame(anim);
-}
-anim();
-
-// Dash Modal Handlers
-const dashModal = document.getElementById('dashModal');
-document.getElementById('openDash').onclick = () => dashModal.classList.add('open');
-document.getElementById('closeDash').onclick = () => dashModal.classList.remove('open');
-
-// Order Modal Handlers
-const orderModal = document.getElementById('orderModal');
-function openOrderModal(serviceName){
-  document.getElementById('orderServiceInput').value = serviceName;
-  
-  // ملء اسم الحساب تلقائياً إذا كان مسجل دخول
-  const savedSession = localStorage.getItem('avora_user_session');
-  if(savedSession){
-    const user = JSON.parse(savedSession);
-    document.getElementById('discordUser').value = user.username;
-  }
-  
-  orderModal.classList.add('open');
-}
-function closeOrderModal(){ orderModal.classList.remove('open'); document.getElementById('orderForm').reset(); }
-
-// Send Order to Backend API
-async function handleOrderSubmit(e){
-  e.preventDefault();
-  const btn = document.getElementById('orderSubmitBtn');
-  btn.innerText = "جاري الإرسال..."; btn.style.opacity = "0.6";
-
-  const payload = {
-    service: document.getElementById('orderServiceInput').value,
-    icName: document.getElementById('icName').value,
-    discordUser: document.getElementById('discordUser').value,
-    icPhone: document.getElementById('icPhone').value,
-    details: document.getElementById('orderDetails').value
-  };
-
-  try {
-    const res = await fetch('/api/order', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(payload)
-    });
-    const data = await res.json();
-
-    if(data.success){
-      alert('✅ ' + data.message);
-      closeOrderModal();
-    } else {
-      alert('❌ ' + data.message);
-    }
-  } catch(err) {
-    alert('❌ تعذر الاتصال بالباكيند.');
-  } finally {
-    btn.innerText = "إرسال الطلب 🚀"; btn.style.opacity = "1";
-  }
-}
-
-// OAuth Callback & Sync
-function handleAuthCallback() {
-  const urlParams = new URLSearchParams(window.location.search);
-  if (urlParams.get('login') === 'success') {
-    const username = urlParams.get('user'), avatar = urlParams.get('avatar'), role = urlParams.get('role');
-    localStorage.setItem('avora_user_session', JSON.stringify({ username, avatar, role }));
-    window.history.replaceState({}, document.title, window.location.pathname);
-    dashModal.classList.add('open');
-  }
-  updateUI();
-}
-
-function updateUI() {
-  const saved = localStorage.getItem('avora_user_session');
-  if (saved) {
-    const u = JSON.parse(saved);
-    document.getElementById('userProfileNav').style.display = 'flex';
-    document.getElementById('navUsername').innerText = u.username;
-    document.getElementById('navAvatar').src = u.avatar;
-
-    document.getElementById('dashStatus').innerText = 'مسجّل ✅';
-    document.getElementById('dashStatus').style.color = '#00FF88';
-    document.getElementById('dashRole').innerText = u.role || 'عضو';
-    document.getElementById('dashNotice').innerText = `مرحباً بك يا ${u.username}! رتبتك الحالية في السيرفر هي: (${u.role}).`;
-
-    document.getElementById('authBtnContainer').innerHTML = `
-      <button onclick="logout()" class="btn btn-outline" style="border-color:#ef4444;color:#ef4444">تسجيل الخروج</button>
-    `;
-  }
-}
-
-function logout(){ localStorage.removeItem('avora_user_session'); location.reload(); }
-window.addEventListener('DOMContentLoaded', handleAuthCallback);
-</script>
-
-<!-- قسم سيرفر أطلس Atlas RP -->
-<section class="atlas-section" id="atlas">
-    <div class="atlas-card">
-        <div class="atlas-header">
-            <div class="atlas-badge">OFFICIAL SERVER</div>
-            <h2>ATLAS ROLEPLAY</h2>
-            <p>السيرفر الرسمي المقترن بجميع خدمات وكالة AVORA</p>
-        </div>
-
-        <div class="atlas-body">
-            <!-- IP السيرفر -->
-            <div class="info-box">
-                <span class="label">🎮 SERVER IP (MTA:SA)</span>
-                <div class="copy-box">
-                    <input type="text" value="mtasa://89.42.88.228:22003" id="atlasIp" readonly>
-                    <button class="btn-copy" onclick="copyAtlasIp()">
-                        <span id="copyBtnText">نسخ IP</span>
-                    </button>
-                </div>
-            </div>
-
-            <!-- أزرار الدخول والديسكورد -->
-            <div class="atlas-actions">
-                <a href="mtasa://89.42.88.228:22003" class="btn-mta">
-                    <span>⚡ دخول السيرفر مباشر</span>
-                </a>
-                <a href="https://discord.gg/BMFqE7d2fM" target="_blank" class="btn-discord">
-                    <span>💬 سيرفر الديسكورد</span>
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
 
 <!-- التنسيقات والسكربت الخاص بقسم أطلس -->
 <style>
@@ -533,6 +480,118 @@ window.addEventListener('DOMContentLoaded', handleAuthCallback);
 </style>
 
 <script>
+// Background Particles
+const canvas = document.getElementById('particles'), ctx = canvas.getContext('2d');
+let pts = [];
+function resize(){ canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+window.addEventListener('resize', resize); resize();
+for(let i=0; i<35; i++){ pts.push({ x: Math.random()*canvas.width, y: Math.random()*canvas.height, vx: (Math.random()-.5)*.5, vy: (Math.random()-.5)*.5, r: Math.random()*2+1 }); }
+function anim(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle = '#FF6B00'; ctx.strokeStyle = 'rgba(255,107,0,0.12)';
+  pts.forEach((p, idx)=>{
+    p.x += p.vx; p.y += p.vy;
+    if(p.x<0||p.x>canvas.width) p.vx*=-1; if(p.y<0||p.y>canvas.height) p.vy*=-1;
+    ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI*2); ctx.fill();
+    for(let j=idx+1; j<pts.length; j++){
+      let p2 = pts[j], dist = Math.hypot(p.x-p2.x, p.y-p2.y);
+      if(dist < 100){ ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(p2.x, p2.y); ctx.stroke(); }
+    }
+  });
+  requestAnimationFrame(anim);
+}
+anim();
+
+// Dash Modal Handlers
+const dashModal = document.getElementById('dashModal');
+document.getElementById('openDash').onclick = () => dashModal.classList.add('open');
+document.getElementById('closeDash').onclick = () => dashModal.classList.remove('open');
+
+// Order Modal Handlers
+const orderModal = document.getElementById('orderModal');
+function openOrderModal(serviceName){
+  document.getElementById('orderServiceInput').value = serviceName;
+  
+  // ملء اسم الحساب تلقائياً إذا كان مسجل دخول
+  const savedSession = localStorage.getItem('avora_user_session');
+  if(savedSession){
+    const user = JSON.parse(savedSession);
+    document.getElementById('discordUser').value = user.username;
+  }
+  
+  orderModal.classList.add('open');
+}
+function closeOrderModal(){ orderModal.classList.remove('open'); document.getElementById('orderForm').reset(); }
+
+// Send Order to Backend API
+async function handleOrderSubmit(e){
+  e.preventDefault();
+  const btn = document.getElementById('orderSubmitBtn');
+  btn.innerText = "جاري الإرسال..."; btn.style.opacity = "0.6";
+
+  const payload = {
+    service: document.getElementById('orderServiceInput').value,
+    icName: document.getElementById('icName').value,
+    discordUser: document.getElementById('discordUser').value,
+    icPhone: document.getElementById('icPhone').value,
+    details: document.getElementById('orderDetails').value
+  };
+
+  try {
+    const res = await fetch('/api/order', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(payload)
+    });
+    const data = await res.json();
+
+    if(data.success){
+      alert('✅ ' + data.message);
+      closeOrderModal();
+    } else {
+      alert('❌ ' + data.message);
+    }
+  } catch(err) {
+    alert('❌ تعذر الاتصال بالباكيند.');
+  } finally {
+    btn.innerText = "إرسال الطلب 🚀"; btn.style.opacity = "1";
+  }
+}
+
+// OAuth Callback & Sync
+function handleAuthCallback() {
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get('login') === 'success') {
+    const username = urlParams.get('user'), avatar = urlParams.get('avatar'), role = urlParams.get('role');
+    localStorage.setItem('avora_user_session', JSON.stringify({ username, avatar, role }));
+    window.history.replaceState({}, document.title, window.location.pathname);
+    dashModal.classList.add('open');
+  }
+  updateUI();
+}
+
+function updateUI() {
+  const saved = localStorage.getItem('avora_user_session');
+  if (saved) {
+    const u = JSON.parse(saved);
+    document.getElementById('userProfileNav').style.display = 'flex';
+    document.getElementById('navUsername').innerText = u.username;
+    document.getElementById('navAvatar').src = u.avatar;
+
+    document.getElementById('dashStatus').innerText = 'مسجّل ✅';
+    document.getElementById('dashStatus').style.color = '#00FF88';
+    document.getElementById('dashRole').innerText = u.role || 'عضو';
+    document.getElementById('dashNotice').innerText = `مرحباً بك يا ${u.username}! رتبتك الحالية في السيرفر هي: (${u.role}).`;
+
+    document.getElementById('authBtnContainer').innerHTML = `
+      <button onclick="logout()" class="btn btn-outline" style="border-color:#ef4444;color:#ef4444">تسجيل الخروج</button>
+    `;
+  }
+}
+
+function logout(){ localStorage.removeItem('avora_user_session'); location.reload(); }
+window.addEventListener('DOMContentLoaded', handleAuthCallback);
+
 function copyAtlasIp() {
     const ipInput = document.getElementById("atlasIp");
     ipInput.select();
@@ -547,7 +606,6 @@ function copyAtlasIp() {
     });
 }
 </script>
-
 
 </body>
 </html>
