@@ -595,8 +595,8 @@ async function handleOrderSubmit(e){
     });
     const data = await res.json();
 
-    if(data.success){
-      alert('✅ ' + data.message);
+      if(data.success){
+      alert(`✅ ${data.message}\n🔑 كود الطلب الخاص بك هو: #${data.orderId}`);
       closeOrderModal();
     } else {
       alert('❌ ' + data.message);
